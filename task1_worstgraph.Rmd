@@ -7,5 +7,26 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+space_launches <- read_csv(here("data", "space_launches.csv"))
+```
+
+```{r}
+ggplot(data = space_launches, aes(y = agency, x = launch_year)) +
+  geom_boxplot(aes(color = agency)) + theme_linedraw() +
+  theme(panel.grid.major.x = element_line(color = "magenta"),
+        axis.text.y = element_text(color = "orange", size = 10, family = "Comic Sans MS"),
+        axis.text.x = element_text(color = "grey", size = 25),
+        text = element_text(color = "purple"),
+        panel.background = element_rect(color = "green", fill = "brown"))
+        
+  
+
+  
 ```
 
