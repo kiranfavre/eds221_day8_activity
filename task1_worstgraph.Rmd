@@ -12,6 +12,8 @@ library(tidyverse)
 library(ggplot2)
 ```
 
+## Task 1: Worst data viz
+
 ```{r}
 space_launches <- read_csv(here("data", "space_launches.csv"))
 ```
@@ -30,3 +32,28 @@ ggplot(data = space_launches, aes(y = agency, x = launch_year)) +
   
 ```
 
+## Task 2: Wrangling practice with SF GHG data
+
+```{r}
+sf_ghg <- read_csv(here("data", "San_Francisco_Communitywide_Greenhouse_Gas_Inventory.csv"))
+```
+
+```{r}
+#make a summary table of total annual ghg emission by sector_general
+ghg_total <- sf_ghg |> 
+  group_by(Sector_General) |> 
+  summarize(ghg_ann_total = sum(Emissions_mtCO2e))
+```
+
+```{r}
+# create a summary tablw of total annual ghg emissions by year and commodity type
+ghg_year <- sf_ghg |> 
+  group_by(Calendar_Year,Commodity_Type) |> 
+  summarize(ghg_ann_total = sum(Emissions_mtCO2e))
+```
+
+```{r}
+#create a subset of the data that only contains observations from 2005 onward, only for obs where Sector_detail2 contains "PG&E" then limit to columns Calendar_year, Sector_Detail2 and Emissions_mtCO2e.
+
+
+```
