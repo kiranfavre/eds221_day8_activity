@@ -54,6 +54,7 @@ ghg_year <- sf_ghg |>
 
 ```{r}
 #create a subset of the data that only contains observations from 2005 onward, only for obs where Sector_detail2 contains "PG&E" then limit to columns Calendar_year, Sector_Detail2 and Emissions_mtCO2e.
-
+ghg_2005 <-  sf_ghg |> 
+  filter(Sector_Detail2 == "PG&E")
 
 ```
